@@ -1,0 +1,317 @@
+
+import numpy as np
+import pandas as pd
+
+from pandas import Series, DataFrame
+
+
+
+
+In [2]:
+
+
+
+series_obj = Series(np.arange(5), index =['Row 1','Row 2','Row 3','Row 4','Row 5'])
+series_obj
+
+
+
+
+
+Out[2]:
+
+Row 1    0
+Row 2    1
+Row 3    2
+Row 4    3
+Row 5    4
+dtype: int32
+
+
+
+In [3]:
+
+
+
+series_obj['Row 3']
+
+
+
+
+
+Out[3]:
+
+2
+
+
+
+In [6]:
+
+
+
+series_obj[[1,3]]
+
+
+
+
+
+Out[6]:
+
+Row 2    1
+Row 4    3
+dtype: int32
+
+
+
+In [8]:
+
+
+
+#Random data generator and creating a dataframe
+np.random.seed(20)
+DF_obj = DataFrame(np.random.rand(36).reshape(6,6), index = ['Row1','Row2','Row3','Row4','Row5','Row6'], columns= ['Col1','Col2','Col3','Col4','Col5','Col6'])
+
+DF_obj
+
+
+
+
+
+Out[8]:
+
+
+ 
+
+
+Col1
+
+Col2
+
+Col3
+
+Col4
+
+Col5
+
+Col6
+
+
+
+Row1
+0.588131 0.897714 0.891531 0.815837 0.035890 0.691758 
+
+Row2
+0.378681 0.518511 0.657951 0.193850 0.272316 0.718606 
+
+Row3
+0.783004 0.850328 0.775245 0.036664 0.116694 0.751281 
+
+Row4
+0.239218 0.254806 0.857626 0.949779 0.561687 0.178781 
+
+Row5
+0.770252 0.492381 0.631253 0.839498 0.461039 0.497940 
+
+Row6
+0.679411 0.650786 0.268795 0.067325 0.771445 0.480984 
+
+
+
+In [11]:
+
+
+
+DF_obj.ix[['Row1', 'Row5'],['Col3', 'Col6']]
+
+
+
+
+Out[11]:
+
+
+ 
+
+
+Col3
+
+Col6
+
+
+
+Row1
+0.891531 0.691758 
+
+Row5
+0.631253 0.497940 
+
+
+
+In [12]:
+
+
+
+DF_obj['Row2':'Row4']
+
+
+
+
+
+Out[12]:
+
+
+ 
+
+
+Col1
+
+Col2
+
+Col3
+
+Col4
+
+Col5
+
+Col6
+
+
+
+Row2
+0.378681 0.518511 0.657951 0.193850 0.272316 0.718606 
+
+Row3
+0.783004 0.850328 0.775245 0.036664 0.116694 0.751281 
+
+Row4
+0.239218 0.254806 0.857626 0.949779 0.561687 0.178781 
+
+
+
+In [26]:
+
+
+
+ DF_obj['Row2':'Row4']
+#DF_obj['Col3':'Col5']
+
+
+
+
+
+Out[26]:
+
+
+ 
+
+
+Col1
+
+Col2
+
+Col3
+
+Col4
+
+Col5
+
+Col6
+
+
+
+Row2
+0.378681 0.518511 0.657951 0.193850 0.272316 0.718606 
+
+Row3
+0.783004 0.850328 0.775245 0.036664 0.116694 0.751281 
+
+Row4
+0.239218 0.254806 0.857626 0.949779 0.561687 0.178781 
+
+
+
+In [27]:
+
+
+
+DF_obj < .3
+
+
+
+
+
+Out[27]:
+
+
+ 
+
+
+Col1
+
+Col2
+
+Col3
+
+Col4
+
+Col5
+
+Col6
+
+
+
+Row2
+False False False True True False 
+
+Row3
+False False False True True False 
+
+Row4
+True True False False False True 
+
+
+
+In [28]:
+
+
+
+series_obj[series_obj > 2]
+
+
+
+
+
+Out[28]:
+
+Row 4    3
+Row 5    4
+dtype: int32
+
+
+
+In [29]:
+
+
+
+series_obj['Row 4'] = 8
+
+
+
+
+In [30]:
+
+
+
+series_obj
+
+
+
+
+
+Out[30]:
+
+Row 1    0
+Row 2    1
+Row 3    2
+Row 4    8
+Row 5    4
+dtype: int32
